@@ -85,32 +85,38 @@ class LinkedList:
             self.length -= 1
 
     def reversed(self):
+        if self.length == 1:
+            return self.head
 
+        first = self.head
+        self.tail = self.head
+        second = first["next"]
 
+        while second is not None:
+            temp = second["next"]
+            second["next"] = first
+            first = second
+            second = temp
+
+        self.head["next"] = None
+        self.head = first
 
 
 
 myLL = LinkedList(12)
-myLL.append(13)
 
-myLL.prepend(11)
+myLL.append(13); myLL.prepend(11)
+myLL.append(14); myLL.prepend(10)
+myLL.append(15); myLL.prepend(9)
 
-myLL.append(14)
+myLL.insert(6, "fifteen"); myLL.insert(108, 88)
 
-myLL.prepend(10)
-myLL.append(15)
+print("After Insert:", myLL.printList())
 
-myLL.prepend(9)
-myLL.append(16)
+myLL.remove(2); myLL.remove(myLL.length)
 
-myLL.insert(6, "fifteen")
-myLL.insert(108, 88)
+print("After remove:", myLL.printList())
 
-print(myLL.printList())
-
-myLL.remove(2)
-#myLL.prepend("one")
-myLL.remove(myLL.length)
-print(myLL.printList())
-
+myLL.reversed()
+print("Reversed: ", myLL.printList())
 print("Length:", myLL.length)
