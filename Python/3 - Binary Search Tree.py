@@ -1,4 +1,4 @@
-class Node(object):
+class Node:
     def __init__(self, value):
         self.right = None
         self.left = None
@@ -13,7 +13,7 @@ class BinarySearchTree:
 
         if self.root is None:
             self.root = newNode
-            return self.root.value
+            return "Inserted as a root node"
 
         currentNode = self.root
         while True:
@@ -21,15 +21,14 @@ class BinarySearchTree:
                 return "Already Exist"
 
             if currentNode.value < value:
-                #print("going right")
                 if currentNode.right is None:
                     currentNode.right = newNode
-                    return "Inserted"
+                    return f"Inserted: {value}"
                 currentNode = currentNode.right
             else:
                 if currentNode.left is None:
                     currentNode.left = newNode
-                    return "Inserted"
+                    return f"Inserted: {value}"
                 currentNode = currentNode.left
 
 
@@ -55,9 +54,17 @@ class BinarySearchTree:
         pass
 
 
-myBST = BinarySearchTree()
-print(myBST.insert(5))
-print(myBST.insert(7))
-print(myBST.insert(3))
+tree = BinarySearchTree()
+print(
+f'''{tree.insert(9)}
+{tree.insert(4)}
+{tree.insert(6)}
+{tree.insert(20)}
+{tree.insert(170)}
+{tree.insert(15)}
+{tree.insert(1)}
+{tree.insert(20)}
+''')
 
-print(myBST.lookup(3))
+print(f'''{tree.lookup(9)}
+{tree.lookup(100)}''')
