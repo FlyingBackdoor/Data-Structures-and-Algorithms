@@ -34,6 +34,10 @@ class BinarySearchTree:
 
 
     def lookup(self, value):
+
+        if self.root is None:
+            return False
+
         currentNode = self.root
 
         while True:
