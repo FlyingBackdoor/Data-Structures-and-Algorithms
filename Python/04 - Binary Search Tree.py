@@ -13,7 +13,7 @@ class BinarySearchTree:
 
         if self.root is None:
             self.root = newNode
-            return "Inserted as a root node"
+            return "Inserted! but try to plant a real tree :)"
 
         currentNode = self.root
         while True:
@@ -31,10 +31,7 @@ class BinarySearchTree:
                     return f"Inserted: {value}"
                 currentNode = currentNode.left
 
-
-
     def lookup(self, value):
-
         if self.root is None:
             return False
 
@@ -54,8 +51,21 @@ class BinarySearchTree:
                     return False
                 currentNode = currentNode.left
 
-    def remove(self):
-        pass
+    def remove(self, value):
+        if self.root is None:
+            return "Grow some tree first ;p"
+
+        currentNode = self.root
+
+        while True:
+            if currentNode.value == value:
+                if currentNode.right is None and currentNode.left is None:
+                    currentNode = None
+                    return f"{value} Removed (Leaf Node)"
+                elif currentNode.right is None or currentNode.left is None:
+                    pass
+
+
 
 
 tree = BinarySearchTree()
